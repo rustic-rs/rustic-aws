@@ -1,0 +1,6 @@
+{
+  "app": "dist/app.js",
+  "context": {
+    "stack-name": "rustic-cold-backups"
+  }
+}
