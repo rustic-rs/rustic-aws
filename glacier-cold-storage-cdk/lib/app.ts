@@ -162,6 +162,24 @@ class ArchiveStack extends Stack {
         }),
         new iam.PolicyStatement({
           actions: [
+            "s3:ListBucket", // find the results object key
+          ],
+          effect: iam.Effect.ALLOW,
+          resources: [
+            batchReportsBucket.bucketArn,
+          ],
+        }),
+        new iam.PolicyStatement({
+          actions: [
+            "s3:GetObject", // read the results to check job status
+          ],
+          effect: iam.Effect.ALLOW,
+          resources: [
+            `${batchReportsBucket.bucketArn}/*`,
+          ],
+        }),
+        new iam.PolicyStatement({
+          actions: [
             "s3:CreateJob",
             "s3:DescribeJob",
           ],
